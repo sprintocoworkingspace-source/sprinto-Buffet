@@ -128,7 +128,6 @@
             font-size: 18px;
         }
 
-        /* أزرار اختيار حالة الدفع */
         .payment-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -208,29 +207,103 @@
 
     <div class="container">
         <div class="header">
-            <h2>☕ طلبات البوفيه</h2>
+            <h2>☕ تسجيل المبيعات و المأكولات</h2>
             <p>اختر الصنف وسجل الطلب بسرعة</p>
         </div>
 
         <form id="buffetForm">
             <div class="form-group">
                 <label for="itemName">اختر الصنف</label>
-                <select id="itemName" required>
-                    <option value="" disabled selected>-- اضغط للاختيار --</option>
-                    <option value="مياه">مياه</option>
-                    <option value="سناكس">سناكس</option>
-                    <option value="نسكافيه">نسكافيه</option>
-                    <option value="شاي باكت">شاي باكت</option>
-                    <option value="شاي سايب">شاي سايب</option>
-                    <option value="قهوه باكت">قهوه باكت</option>
-                    <option value="قهوه سايب">قهوه سايب</option>
-                    <option value="حلويات">حلويات</option>
-                    <option value="كولا">كولا</option>
-                    <option value="عصير">عصير</option>
-                    <option value="اندومي">اندومي</option>
-                    <option value="اضافت باكت اندومي">اضافت باكت اندومي</option>
-                    <option value="اضافت بكت نسكافيه">اضافت بكت نسكافيه</option>
-                    <option value="اضافت باكت قهوه">اضافت باكت قهوه</option>
+                <select id="itemName" onchange="updatePrice()" required>
+                    <option value="" data-price="" disabled selected>-- اضغط للاختيار --</option>
+                    
+                    <optgroup label="--- مشروبات ومأكولات ---">
+                        <option value="مياه ص" data-price="7">مياه ص</option>
+                        <option value="مياه ك" data-price="12">مياه ك</option>
+                        <option value="اندومي ك" data-price="20">اندومي ك</option>
+                        <option value="اندومي ص" data-price="15">اندومي ص</option>
+                        <option value="كولا 10" data-price="10">كولا 10</option>
+                        <option value="كولا 12" data-price="12">كولا 12</option>
+                        <option value="كولا 15" data-price="15">كولا 15</option>
+                        <option value="كولا 20" data-price="20">كولا 20</option>
+                        <option value="عصير 10" data-price="10">عصير 10</option>
+                        <option value="عصير 12" data-price="12">عصير 12</option>
+                        <option value="عصير 13" data-price="13">عصير 13</option>
+                        <option value="عصير 15" data-price="15">عصير 15</option>
+                        <option value="لبن" data-price="15">لبن</option>
+                        <option value="سناكس 15" data-price="15">سناكس 15</option>
+                        <option value="سناكس 10" data-price="10">سناكس 10</option>
+                        <option value="سناكس 8" data-price="8">سناكس 8</option>
+                        <option value="سناكس 7" data-price="7">سناكس 7</option>
+                        <option value="سناكس 6" data-price="6">سناكس 6</option>
+                        <option value="سناكس 5" data-price="5">سناكس 5</option>
+                        <option value="سناكس 3" data-price="3">سناكس 3</option>
+                        <option value="حلويات 10" data-price="10">حلويات 10</option>
+                        <option value="حلويات 9" data-price="9">حلويات 9</option>
+                        <option value="حلويات 8" data-price="8">حلويات 8</option>
+                        <option value="حلويات 7" data-price="7">حلويات 7</option>
+                        <option value="حلويات 6" data-price="6">حلويات 6</option>
+                        <option value="حلويات 5" data-price="5">حلويات 5</option>
+                        <option value="حلويات 4" data-price="4">حلويات 4</option>
+                        <option value="حلويات 3" data-price="3">حلويات 3</option>
+                        <option value="حلويات 2" data-price="2">حلويات 2</option>
+                        <option value="حلويات 1" data-price="1">حلويات 1</option>
+                        <option value="حلويات 0.5" data-price="0.5">حلويات 0.5</option>
+                        <option value="نسكافيه 20" data-price="20">نسكافيه 20</option>
+                        <option value="نسكافيه 15" data-price="15">نسكافيه 15</option>
+                        <option value="نسكافيه 10" data-price="10">نسكافيه 10</option>
+                        <option value="قهوة باكيت" data-price="20">قهوة باكيت</option>
+                        <option value="قهوة سايب" data-price="20">قهوة سايب</option>
+                        <option value="شاي باكيت" data-price="10">شاي باكيت</option>
+                        <option value="شاي سايب" data-price="10">شاي سايب</option>
+                        <option value="شاي نكهات" data-price="15">شاي نكهات</option>
+                        <option value="اعشاب" data-price="10">اعشاب</option>
+                    </optgroup>
+
+                    <optgroup label="--- الإضافات و الخدمات ---">
+                        <option value="اضافة قهوة سايبه" data-price="9">اضافة قهوة سايبه</option>
+                        <option value="اضافة باكيت قهوة" data-price="9">اضافة باكيت قهوة</option>
+                        <option value="اضافة شاي سايب" data-price="3">اضافة شاي سايب</option>
+                        <option value="اضافة باكيت شاي" data-price="3">اضافة باكيت شاي</option>
+                        <option value="اضافة باكيت شاي نكهات" data-price="5">اضافة باكيت شاي نكهات</option>
+                        <option value="اضافة باكيت اندومي صغير" data-price="5">اضافة باكيت اندومي صغير</option>
+                        <option value="اضافة باكيت اندومي كبير" data-price="10">اضافة باكيت اندومي كبير</option>
+                        <option value="اضافة باكيت نسكافيه 10" data-price="10">اضافة باكيت نسكافيه 10</option>
+                        <option value="اضافة باكيت نسكافيه 5" data-price="5">اضافة باكيت نسكافيه 5</option>
+                        <option value="اضافة اعشاب" data-price="3">اضافة اعشاب</option>
+                        <option value="مناديل" data-price="3">مناديل</option>
+                        <option value="تحضير" data-price="7">تحضير</option>
+                    </optgroup>
+
+                    <optgroup label="--- أدوات مكتبية وأخرى ---">
+                        <option value="قلم اشكال" data-price="25">قلم اشكال</option>
+                        <option value="هايلايتر" data-price="">هايلايتر</option>
+                        <option value="قلم رصاص 4" data-price="4">قلم رصاص 4</option>
+                        <option value="قلم رصاص 5" data-price="5">قلم رصاص 5</option>
+                        <option value="قلم رصاص 6" data-price="6">قلم رصاص 6</option>
+                        <option value="قلم سنون" data-price="">قلم سنون</option>
+                        <option value="سنون" data-price="">سنون</option>
+                        <option value="جومه" data-price="">جومه</option>
+                        <option value="برايه" data-price="">برايه</option>
+                        <option value="نوت بوك" data-price="">نوت بوك</option>
+                        <option value="سكتش 40 ورقه" data-price="">سكتش 40 ورقه</option>
+                        <option value="سكتش 60 ورقه" data-price="">سكتش 60 ورقه</option>
+                        <option value="سكتش 80 ورقه" data-price="">سكتش 80 ورقه</option>
+                        <option value="سكتش 100 ورقه" data-price="">سكتش 100 ورقه</option>
+                        <option value="سكتش 150 ورقه" data-price="">سكتش 150 ورقه</option>
+                        <option value="كراسه 40 ورقه" data-price="">كراسه 40 ورقه</option>
+                        <option value="كراسه 60 ورقه" data-price="">كراسه 60 ورقه</option>
+                        <option value="كراسه 80 ورقه" data-price="">كراسه 80 ورقه</option>
+                        <option value="كراسه 100 ورقه" data-price="">كراسه 100 ورقه</option>
+                        <option value="ورق فيلوسكاب" data-price="">ورق فيلوسكاب</option>
+                        <option value="Stickzy" data-price="">Stickzy</option>
+                        <option value="Designy" data-price="">Designy</option>
+                        <option value="Stickers Studio 15" data-price="15">Stickers Studio 15</option>
+                        <option value="Stickers Studio 25" data-price="25">Stickers Studio 25</option>
+                        <option value="Stickers Studio 50" data-price="50">Stickers Studio 50</option>
+                        <option value="UP Store" data-price="">UP Store</option>
+                        <option value="Khadija Medals" data-price="">Khadija Medals</option>
+                    </optgroup>
                 </select>
             </div>
 
@@ -248,7 +321,6 @@
                 </div>
             </div>
 
-            <!-- خيار حالة الدفع -->
             <div class="form-group">
                 <label>حالة الدفع</label>
                 <div class="payment-options">
@@ -265,7 +337,7 @@
 
             <div class="form-group">
                 <label for="itemNotes">ملاحظات الطلب (اختياري)</label>
-                <textarea id="itemNotes" placeholder="مثال: سكر خفيف، طاولة 2، اسم العميل..."></textarea>
+                <textarea id="itemNotes" placeholder="مثال: سكر خفيف، اسم العميل..."></textarea>
             </div>
 
             <button type="submit" id="submitBtn">تسجيل الطلب</button>
@@ -275,8 +347,20 @@
     </div>
 
     <script>
-        // الرابط الجديد الخاص بك
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwywAAeYJen9byLwqnxugJQ260QFlnkhzN2KuMN5XsAlUbWlKQQAggHZXzJiDJSZMLI/exec';
+
+        function updatePrice() {
+            const select = document.getElementById('itemName');
+            const selectedOption = select.options[select.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            
+            const priceInput = document.getElementById('itemPrice');
+            if (price !== null && price !== "") {
+                priceInput.value = price;
+            } else {
+                priceInput.value = '';
+            }
+        }
 
         function increaseQty() {
             const qtyInput = document.getElementById('itemQuantity');
